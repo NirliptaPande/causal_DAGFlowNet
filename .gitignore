@@ -131,4 +131,5 @@ dmypy.json
 # Data
 /data/*
 !/data/june.csv
+!/data/season.csv
 !/data/.gitkeep
