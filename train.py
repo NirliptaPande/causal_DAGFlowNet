@@ -125,7 +125,7 @@ if __name__ == '__main__':
 
     # Environment
     environment = parser.add_argument_group('Environment')
-    environment.add_argument('--num_eFponvs', type=int, default=8,
+    environment.add_argument('--num_envs', type=int, default=8,
         help='Number of parallel environments (default: %(default)s)')
     environment.add_argument('--scorer_kwargs', type=json.loads, default='{}',
         help='Arguments of the scorer.')
