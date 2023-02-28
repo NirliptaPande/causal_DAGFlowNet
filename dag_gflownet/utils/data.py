@@ -72,7 +72,7 @@ def get_data(name, args, rng=default_rng()):
         )
         #graph = get_example_model('asia')
         # https://www.etsy.com/shop/LilstarnerdShop
-        data = pd.read_csv('/home/npande/jax-dag-gflownet/data/june.csv',dtype=float)
+        data = pd.read_csv('jax-dag-gflownet/data/annual_mean.csv',dtype=float)
         #data = data[:10000]
         data = (data - data.mean())/data.std()
         score = 'bge'
