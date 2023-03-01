@@ -106,13 +106,13 @@ def main(args):
     args.output_folder.mkdir(exist_ok=True)
     with open(args.output_folder / 'arguments.json', 'w') as f:
         json.dump(vars(args), f, default=str)
-    data.to_csv(args.output_folder / 'data.csv')
-    with open(args.output_folder / 'graph.pkl', 'wb') as f:
+    data.to_csv(args.output_folder / 'data_mm_base.csv')
+    with open(args.output_folder / 'graph_mm_base.pkl', 'wb') as f:
         pickle.dump(graph, f)
-    io.save(args.output_folder / 'model.npz', params=params.online)
-    replay.save(args.output_folder / 'replay_buffer.npz')
-    np.save(args.output_folder / 'posterior.npy', posterior)
-    with open(args.output_folder / 'results.json', 'w') as f:
+    io.save(args.output_folder / 'model_mm_base.npz', params=params.online)
+    replay.save(args.output_folder / 'replay_buffer_mm_base.npz')
+    np.save(args.output_folder / 'posterior_mm_base.npy', posterior)
+    with open(args.output_folder / 'results_mm_base.json', 'w') as f:
         json.dump(results, f, default=list)
 
 
@@ -195,7 +195,9 @@ if __name__ == '__main__':
 
     #Test with ignition data
 
-    asia = subparsers.add_parser('asia')
+    monthmean_base = subparsers.add_parser('monthmean_base')
+    monthmean_all = subparsers.add_parser('monthmean_all')
+
     args = parser.parse_args()
 
     main(args)

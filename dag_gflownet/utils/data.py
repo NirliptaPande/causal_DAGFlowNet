@@ -63,7 +63,7 @@ def get_data(name, args, rng=default_rng()):
         data = pd.read_csv(filename, delimiter=' ', dtype='category')
         score = 'bde'
         
-    elif name =='asia':
+    elif name =='monthmean_all':
         graph = asia(
             loc_edges=0.0,
             scale_edges=1.0,
@@ -71,11 +71,23 @@ def get_data(name, args, rng=default_rng()):
             rng=rng
         )
         #graph = get_example_model('asia')
-        # https://www.etsy.com/shop/LilstarnerdShop
-        data = pd.read_csv('jax-dag-gflownet/data/annual_mean_base.csv',dtype=float)
+        data = pd.read_csv('jax-dag-gflownet/data/monthly_mean_all.csv',dtype=float)
         #data = data[:10000]
         data = (data - data.mean())/data.std()
         score = 'bge'
+
+    elif name == 'monthmean_base':
+        graph = asia(
+                loc_edges=0.0,
+                scale_edges=1.0,
+                obs_noise=0.1,
+                rng=rng
+            )
+        data = pd.read_csv('jax-dag-gflownet/data/monthly_mean_base.csv',dtype=float)
+        #data = data[:10000]
+        data = (data - data.mean())/data.std()
+        score = 'bge'
+
     
     else:
         raise ValueError(f'Unknown graph type: {name}')
